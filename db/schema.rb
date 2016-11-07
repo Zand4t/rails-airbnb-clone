@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107153413) do
+ActiveRecord::Schema.define(version: 20161107164454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content"
+    t.string   "content"
     t.integer  "user_id"
+    t.integer  "stream_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["stream_id"], name: "index_comments_on_stream_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
@@ -44,10 +46,8 @@ ActiveRecord::Schema.define(version: 20161107153413) do
     t.string   "name"
     t.string   "description"
     t.integer  "owner_id"
-    t.integer  "comment_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["comment_id"], name: "index_streams_on_comment_id", using: :btree
     t.index ["owner_id"], name: "index_streams_on_owner_id", using: :btree
   end
 
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 20161107153413) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "streams"
   add_foreign_key "comments", "users"
   add_foreign_key "stream_tags", "streams"
   add_foreign_key "stream_tags", "tags"
-  add_foreign_key "streams", "comments"
   add_foreign_key "streams", "owners"
 end
