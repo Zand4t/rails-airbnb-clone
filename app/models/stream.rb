@@ -5,4 +5,8 @@ class Stream < ApplicationRecord
   has_many :comments
   has_many :users, through: :comments
 
+  validates :name, presence: :true
+  validates :owner, presence: :true
+
+
 end
