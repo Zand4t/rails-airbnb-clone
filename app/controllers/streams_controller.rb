@@ -10,34 +10,38 @@ class StreamsController < ApplicationController
   end
 
   def new
-    if :owner?
+    #if :owner?
       @stream = Stream.new
-    else
-      redirect_to streams_path
-    end
+    #else
+     # redirect_to streams_path
+    #end
+
     # check if the owner_id boolean == true
     # if not, reject method
   end
 
   def edit
-    if :owner?
+    # if current_user.owner?
       @stream = Stream.find(params[:id])
-    else
-      redirect_to streams_path
-    end
+    # else
+    #  redirect_to streams_path
+    # end
     # check if the owner_id boolean == true
     # if not, reject method
   end
 
   def create
-    if :owner?
-      Stream.create(stream_params)#owner_id part of the augment too?
-      redirect_to stream_path
-    else
-      redirect_to streams_path
-    end
-    # check if the owner_id boolean == true
-    # if not, reject method
+    # if current_user.owner?
+      @stream = Stream.new(stream_params)#owner_id part of the augment too?
+      @stream.user = current_user
+      if @stream.save
+        redirect_to stream_path(@stream)
+      else
+        render :new
+      end
+    # else
+      # redirect_to streams_path
+    # end
   end
 
   def update
@@ -46,12 +50,12 @@ class StreamsController < ApplicationController
   end
 
   def destroy
-    if :owner?
+    #if current_user.owner?
       @stream.destroy
       redirect_to streams_path
-    else
-      redirect_to streams_path
-    end
+    # else
+    #  redirect_to streams_path
+    #end
     # check if the owner_id boolean == true
     # if not, reject method
   end
@@ -64,7 +68,7 @@ class StreamsController < ApplicationController
   end
 
   def stream_params
-    params.require(:stream).permit(:name, :link, :description, :owner)
+    params.require(:stream).permit(:name, :link, :description)
     # this prevents users from inserting new db columns into the db
     # so we define what columns DO exist/are approved
   end
