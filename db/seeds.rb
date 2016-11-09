@@ -8,7 +8,21 @@
 
 # Owners
 
-owners_attributes = Owner.create([{name: 'Tom'}, {name: 'Jerry'}])
+owners_attributes = [
+  {
+    name: 'Tom'
+  }
+  {
+    name: 'Jerry'
+  }
+  {
+    name: 'Angela'
+  }
+
+]
+
+
+owner = owners_attributes.each [ {|params| Owner.create!(params)} ]
 
 #streams
 streams_attributes = [
@@ -17,13 +31,13 @@ streams_attributes = [
     name: 'Crocs are cool',
     link: 'www.youtube.com',
     description: 'I love Crocs',
-    owner_id: 1
+    owner_id: owner.first
   },
   {
     name: 'Gators are Great',
     link: 'www.wikipedia.org',
     description: 'Alligators are my friends',
-    owner_id: 2
+    owner_id: owner.first
   }
 ]
 
