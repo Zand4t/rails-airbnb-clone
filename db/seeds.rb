@@ -6,23 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Owners
+# user
 
-owners_attributes = [
-  {
-    name: 'Tom'
-  }
-  {
-    name: 'Jerry'
-  }
-  {
-    name: 'Angela'
-  }
-
-]
-
-
-owner = owners_attributes.each [ {|params| Owner.create!(params)} ]
+#user.create
 
 #streams
 streams_attributes = [
@@ -31,13 +17,13 @@ streams_attributes = [
     name: 'Crocs are cool',
     link: 'www.youtube.com',
     description: 'I love Crocs',
-    owner_id: owner.first
+    owner: #user.first
   },
   {
     name: 'Gators are Great',
     link: 'www.wikipedia.org',
     description: 'Alligators are my friends',
-    owner_id: owner.first
+    owner: #user.last
   }
 ]
 

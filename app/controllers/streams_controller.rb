@@ -1,5 +1,4 @@
 class StreamsController < ApplicationController
-  before_action :set_owner, only: [:new, :create]
   before_action :set_stream, only: [:show, :update, :destroy]
 
   def index
@@ -44,9 +43,6 @@ class StreamsController < ApplicationController
   def update
     @stream.update(stream_params)
     redirect_to stream_path
-
-    # check if the owner_id boolean == true
-    # if not, reject method
   end
 
   def destroy
@@ -63,16 +59,12 @@ class StreamsController < ApplicationController
 
   private
 
-  def set_owner
-    @owner = Owner.find(params[:owner_id])
-  end
-
   def set_stream
     @stream = Stream.find(params[:id])
   end
 
   def stream_params
-    params.require(:stream).permit(:name, :link, :description)
+    params.require(:stream).permit(:name, :link, :description, :owner)
     # this prevents users from inserting new db columns into the db
     # so we define what columns DO exist/are approved
   end

@@ -1,4 +1,7 @@
 class OwnerStreamsController < ApplicationController
+
+### This needs to be reworked now that onwer_id isn't a thing in the stream table!!! ###
+
   before_action :set_owner
 
   def index

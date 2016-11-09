@@ -17,7 +17,6 @@ class TagStreamsController < ApplicationController
   end
 
   def stream_params
-    params.require(:stream).permit(:name, :link) #description? Double check if this is 'required' or just the columns to be filled
-  end
+    params.require(:stream).permit(:name, :link, :description)
 
 end
