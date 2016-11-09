@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-has_many :comments
 
 validates :name, presence: :true
+
+has_many :comments
+has_many :streams
+validates :description, presence: :true, if: :owner?
 
 end
