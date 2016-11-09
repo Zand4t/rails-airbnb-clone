@@ -1,2 +1,0 @@
-class OwnerStreamsController < ApplicationController
-end
