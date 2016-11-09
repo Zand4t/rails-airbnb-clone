@@ -6,7 +6,7 @@ class TagStreamsController < ApplicationController
   end
 
   def show
-    @stream = Stream.find(params[:id])
+    @stream = Stream.find(params[:tag_id])
     # @stream = Stream.find(params[@tag])?
   end
 

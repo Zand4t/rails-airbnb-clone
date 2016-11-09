@@ -6,7 +6,7 @@ class OwnerStreamsController < ApplicationController
   end
 
   def show
-    @stream = Stream.find(params[:id])
+    @stream = Stream.find(params[:owner_id])
     # @stream = Stream.find(params[:owner_id])?
   end
 
@@ -16,8 +16,8 @@ class OwnerStreamsController < ApplicationController
     @owner = Owner.find(params[:owner_id])
   end
 
-  def stream_params
-    params.require(:stream).permit(:name, :link) #description? Double check if this is 'required' or just the columns to be filled
-  end
+  # def stream_params
+  #  params.require(:stream).permit(:name, :link) #description? Double check if this is 'required' or just the columns to be filled
+  # end
 
 end
