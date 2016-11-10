@@ -8,6 +8,22 @@
      <br>
       <%= link_to 'Destroy Stream', @stream , method: :delete, data: { confirm: 'Delete Stream?'} %>
      <br>
-     <%= link_to 'Go Back to Index', streams_path %>
      </p>
 
+<strong>Comments</strong>
+<br>
+  <% @stream.comments.each do |comment| %>
+    <%= comment.user_id %>
+    <%= comment.content %>
+    <%= link_to 'Delete', [@stream, comment] , method: :delete, data: { confirm: 'Delete Comment?'} %>
+<br>
+<% end %>
+
+<br>
+<%= form_for ([@stream, @new_comment]) do |f| %>
+  <%= f.label 'Create Comment' %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>
+
+<p><%= link_to 'Go Back to Index', streams_path %></p>
