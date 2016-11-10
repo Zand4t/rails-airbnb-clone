@@ -6,6 +6,7 @@ class StreamsController < ApplicationController
   end
 
   def show
+      @new_comment = Comment.new
 
   end
 
@@ -68,7 +69,7 @@ class StreamsController < ApplicationController
   end
 
   def stream_params
-    params.require(:stream).permit(:name, :link, :description)
+    params.require(:stream).permit(:name, :link, :description, :comments)
     # this prevents users from inserting new db columns into the db
     # so we define what columns DO exist/are approved
   end
