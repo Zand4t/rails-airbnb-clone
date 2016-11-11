@@ -1,6 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  private
+
+  def after_sign_out_path_for(resource_or_scope)
+    '/users/sign_up/'
+  end
+
+   def after_sign_in_path_for(resource_or_scope)
+    streams_path
+  end
 
   protected
 

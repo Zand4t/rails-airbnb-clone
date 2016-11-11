@@ -1,0 +1,2 @@
+class TagStreamsController < ApplicationController
+end

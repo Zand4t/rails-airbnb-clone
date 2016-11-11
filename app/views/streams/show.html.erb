@@ -30,7 +30,7 @@
 <strong>Comments</strong>
 <br>
   <% @stream.comments.each do |comment| %>
-    <%= comment.user_id %>
+    <%= comment.user.name %>
     <%= comment.content %>
     <%= link_to 'Delete', [@stream, comment] , method: :delete, data: { confirm: 'Delete Comment?'} %>
 <br>
