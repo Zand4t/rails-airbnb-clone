@@ -11,20 +11,28 @@
 #user.create
 
 #streams
-streams_attributes = [
 
-  {
-    name: 'Crocs are cool',
-    link: 'www.youtube.com',
-    description: 'I love Crocs',
-    owner: #user.first
-  },
-  {
-    name: 'Gators are Great',
-    link: 'www.wikipedia.org',
-    description: 'Alligators are my friends',
-    owner: #user.last
-  }
+
+tags = [
+
+    {
+      name: "politics"
+    },
+    {
+      name: "war"
+    },
+    {
+      name: "sustainability"
+    },
+    {
+      name: "local government"
+    },
+    {
+      name: "public finance"
+    },
+    {
+      name: "modern art"
+    },
 ]
 
-streams_attributes.each { |params| Stream.create!(params) }
+tags.each { |params| Tag.create!(params) }

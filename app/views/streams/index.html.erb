@@ -1,11 +1,25 @@
 <h1>Streams Index</h1>
 <p>This should list all the streams in the db</p>
+
 <% @streams.each do |stream| %>
 
   <h3><%= stream.name%></h3>
+
+  <p>Category</p>
+
+<% stream.tags.uniq.each do |tag| %>
+  <%= tag.name %>
+
+<% end %>
+
+</p>
+
   <%= stream.link%>
   <p>
+
   <%= link_to 'Show', stream %>
   </p>
 <% end %>
+
 <%= link_to 'Create a new Stream', new_stream_path %>
+

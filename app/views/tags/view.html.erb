@@ -1,0 +1,19 @@
+
+
+<% @tag = Tag.find(params[:id]) %>
+
+<<h1>Streams per tag </h1>
+
+<<p> Here a nice list of streams per tag </p>
+
+<% @tag.streams each do | stream | %>
+
+<h3><%= stream.name %></h3>
+<%= stream.link %>
+<p>
+  <%= link_to 'show', stream %>
+</p>
+<% end  %>
+
+<%= link_to 'Home', root_path %>
+

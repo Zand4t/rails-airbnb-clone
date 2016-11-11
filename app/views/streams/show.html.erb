@@ -3,12 +3,29 @@
 <h1><%= @streams.name %></h1>
 <p><%= @streams.link %></p>
 <p><%= @streams.description %></p>
+<p><% @stream.tags.uniq.each do |tag| %>
+  <%= tag.name %>
+</p>
+
+<% end %>
+
 <p>
+
+<p> Add tag to stream </p>
+<%= form_for ([@stream, @stream_tag]) do |f| %>
+  <%= f.label 'Create Tag' %>
+  <%= f.collection_select(:tag_id, @tags, :id, :name) %>
+  <%= f.submit %>
+<% end %>
+
+
      <%= link_to 'Edit Stream', edit_stream_url %>
      <br>
       <%= link_to 'Destroy Stream', @stream , method: :delete, data: { confirm: 'Delete Stream?'} %>
      <br>
-     </p>
+
+</p>
+
 
 <strong>Comments</strong>
 <br>

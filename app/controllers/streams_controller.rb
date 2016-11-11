@@ -7,7 +7,8 @@ class StreamsController < ApplicationController
 
   def show
       @new_comment = Comment.new
-
+      @stream_tag = StreamTag.new
+      @tags = Tag.all
   end
 
   def new

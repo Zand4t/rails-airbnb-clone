@@ -5,11 +5,10 @@ Rails.application.routes.draw do
 
   resources  :streams do
     resources :comments
+    resources :stream_tags, only:[:new, :create]
   end
 
-  resources :tags do
-    resources :streams, controller: 'tag_streams'
-  end
+  resources :tags, only: [:show]
 
 end
 
