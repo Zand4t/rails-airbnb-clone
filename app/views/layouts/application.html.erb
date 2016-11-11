@@ -10,8 +10,13 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
+    <% unless controller_name == "pages" && current_user.nil? %>
     <%= render 'shared/navbar' %>
+    <% end %>
     <%= yield %>
+    <% unless controller_name == "pages" && current_user.nil? %>
+    <%= render 'shared/footer' %>
+    <% end %>
     <%= javascript_include_tag 'application' %>
 
     <p class="notice"><%= notice %></p>
