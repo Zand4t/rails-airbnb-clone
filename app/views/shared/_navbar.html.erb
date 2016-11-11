@@ -16,10 +16,17 @@
     </form>
 
     <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a>
+    <% if not current_user  %>
+   <!--     <a class="navbar-wagon-item navbar-wagon-link">Sign Out</a> -->
+      <%=  link_to 'Sign In',new_user_session_path %>
+     <% else  %>
+   <!--  <a class="navbar-wagon-item navbar-wagon-link">Sign In</a> -->
+   <%=  link_to 'Sign Out',destroy_user_session_path , :method => :delete %>
+
+    <% end  %>
 
     <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Team</a>
+    <a class="navbar-wagon-item navbar-wagon-link">Team</a  >
 
     <!-- Notification link-->
     <a href="" class="navbar-wagon-item navbar-wagon-link">
